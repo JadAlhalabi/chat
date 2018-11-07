@@ -1,3 +1,7 @@
 .message_box {
   size: 2px
 };
+
+.msg {
+  display: block;
+}
