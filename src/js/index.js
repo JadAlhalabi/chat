@@ -1,8 +1,6 @@
 /* eslint-disable no-unused-vars */
 import style from '../css/style.css';
 /* eslint-enable no-unused-vars */
-// TODO: Skriva ut meddelanden
-// TODO: Kunna välja ett användernamn
 // TODO: Chatt user interface (html, css)
 // TODO: Skicka meddelander med enter
 // TODO: Läsa in chatt historik
@@ -16,6 +14,13 @@ const connection = new WebSocket('ws://104.248.143.87:1337');
 connection.onmessage = message => {
   const obj = JSON.parse(message.data);
   console.log(obj.data.text);
+  console.log(obj.type);
+
+  if (obj.type === 'color') {
+    const msg = document.getElementById('msg');
+    msg.setAttribute('placeholder', 'Input message');
+  }
+
   const temp = document.getElementById('temp');
   const clone = document.importNode(temp.content.firstElementChild, true);
   clone.textContent = obj.data.text;
