@@ -4,8 +4,6 @@ import style from '../css/style.css';
 
 // TODO: Chatt user interface (html, css)
 // TODO: Användare ska ha olika färger
-// TODO: Man ska kunna se vem som skicka ett meddelande
-// TODO: Kunna se vilken tid ett meddelande skickades
 // TODO: Enklare dokumentation
 import password from './config';
 
