@@ -6,6 +6,25 @@
   display: block;
 }
 
-/*body {
-  background-color: rgb(0, 102, 255);
-}*/
+body {
+  background-color: rgb(156, 14, 14);
+}
+
+
+.AroundChattText{
+text-align: center;
+font-size: 60px;
+}
+
+#paste{
+  height: 500px;
+  overflow: auto;
+  width: 800px;
+  margin: 0 auto;
+  background-color: grey;
+}
+
+.TextBox{
+  width: 800px;
+  margin: 0 auto;
+}

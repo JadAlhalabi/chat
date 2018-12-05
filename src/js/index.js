@@ -4,13 +4,13 @@ import style from '../css/style.css';
 
 // TODO: Chatt user interface (html, css)
 // TODO: Användare ska ha olika färger
-// TODO: Enklare dokumentation
 import password from './config';
 
-function printmsg(printer, author, time) {
+function printmsg(printer, author, time, color) {
   const temp = document.getElementById('temp');
   const clone = document.importNode(temp.content.firstElementChild, true);
-  clone.textContent = ` ${new Date(time)} ${author} ${printer}`;
+  clone.textContent = ` ${new Date(time).toString().substr(15, 6)} ${author}: ${printer}`;
+  clone.style = `color: ${color}`;
   const paste = document.getElementById('paste');
   paste.appendChild(clone);
 }
@@ -32,10 +32,12 @@ connection.onmessage = message => {
     const history = obj.data;
     history.forEach(element => {
       console.log(element.text);
-      printmsg(element.text, element.author, element.time);
+      printmsg(element.text, element.author, element.time, element.color);
     });
   }
-  printmsg(obj.data.text, obj.data.author, obj.data.time);
+  if (obj.type === 'message') {
+    printmsg(obj.data.text, obj.data.author, obj.data.time, obj.data.color);
+  }
 };
 
 const btnEl = document.getElementById('btn');
@@ -43,7 +45,7 @@ btnEl.addEventListener('click', event => {
   event.preventDefault();
   const textinput = document.getElementById('msg');
   const obj = {
-    type: 'Message',
+    type: 'message',
     data: textinput.value,
     key: password
   };
