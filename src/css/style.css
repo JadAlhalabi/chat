@@ -24,7 +24,17 @@ font-size: 60px;
   background-color: grey;
 }
 
-.TextBox{
+.txt_btn{
   width: 800px;
   margin: 0 auto;
+}
+
+.txt_box{
+  width: 744px;
+  height: 25px;
+}
+
+.cls_btn{
+  background-color: green;
+  height: 30px;
 }

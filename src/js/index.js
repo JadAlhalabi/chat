@@ -2,8 +2,6 @@
 import style from '../css/style.css';
 /* eslint-enable no-unused-vars */
 
-// TODO: Chatt user interface (html, css)
-// TODO: Användare ska ha olika färger
 import password from './config';
 
 function printmsg(printer, author, time, color) {
@@ -41,7 +39,8 @@ connection.onmessage = message => {
 };
 
 const btnEl = document.getElementById('btn');
-btnEl.addEventListener('click', event => {
+
+const send_msg = event => {
   event.preventDefault();
   const textinput = document.getElementById('msg');
   const obj = {
@@ -49,6 +48,15 @@ btnEl.addEventListener('click', event => {
     data: textinput.value,
     key: password
   };
+
   const JsonObj = JSON.stringify(obj);
   connection.send(JsonObj);
+};
+
+window.addEventListener('keydown', event => {
+  if (event.code === `Enter`) {
+    send_msg(event);
+  }
 });
+
+btnEl.addEventListener('click', send_msg);
