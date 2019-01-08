@@ -51,6 +51,7 @@ const send_msg = event => {
 
   const JsonObj = JSON.stringify(obj);
   connection.send(JsonObj);
+  textinput.value = '';
 };
 
 window.addEventListener('keydown', event => {
